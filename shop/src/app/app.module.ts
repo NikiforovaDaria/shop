@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './components/product/product.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductsService } from './components/product-list/products.service';
-import { CartComponent } from './components/cart/cart.component';
-import { CartService } from './components/cart/cart.service';
+import { ProductComponent } from './components/products/components/product/product.component';
+import { ProductListComponent } from './components/products/components/product-list/product-list.component';
+import { ProductsService } from './components/products/services/products.service';
+import { CartComponent } from './components/cart/components/cart/cart.component';
+import { CartService } from './components/cart/services/cart.service';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { CartService } from './components/cart/cart.service';
     AppComponent,
     ProductComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
   ],
   imports: [
     BrowserModule,
