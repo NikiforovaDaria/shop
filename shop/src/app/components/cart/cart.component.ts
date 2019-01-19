@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Product, Category } from '../product/product.model';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,15 +8,11 @@ import { Product, Category } from '../product/product.model';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  cartProducts: Product[];
 
-  isEmpty: boolean;
-  cartProduct: string
-
-  constructor() { }
+  constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    // this.cartProduct = this.service.cartProduct;
-    this.cartProduct ='hello world'
+    this.cartProducts = this.cartService.getCartProduct();
   }
-
 }

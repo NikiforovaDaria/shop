@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Product } from './components/product/product.model';
-import { ProductComponent } from './components/product/product.component';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +8,4 @@ import { ProductComponent } from './components/product/product.component';
 
 export class AppComponent {
   title = 'shop';
-
-
-  updateCartStatus(product: Product){
-    console.log(product)
-  }
 }
