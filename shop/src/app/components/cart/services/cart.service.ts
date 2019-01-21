@@ -8,13 +8,12 @@ import { ProductModel } from '../../products/models/productModel.model';
 export class CartService {
 
   cartProducts: ProductModel[];
-
+  index: number;
   constructor() {
     this.cartProducts = [];
   }
 
   addToCart(product) {
-    console.log(product);
     this.cartProducts.push(product);
   }
 

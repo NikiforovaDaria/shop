@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { ProductModel } from '../../../products/models/productModel.model';
 import { CartService } from '../../services/cart.service';
@@ -9,11 +9,16 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+
   cartProducts: ProductModel[];
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
     this.cartProducts = this.cartService.getCartProduct();
+  }
+
+  removeFromCart(index) {
+    this.cartService.removeFromCart(index);
   }
 }

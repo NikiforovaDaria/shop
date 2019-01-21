@@ -6,7 +6,7 @@
   </div>
 </ng-template>
 <ng-template #isNotEmpty>
-  <div *ngFor='let cartProduct of cartProducts'>
+  <div *ngFor='let cartProduct of cartProducts; let i = index'>
     <ul>
         <li>{{cartProduct.name}}</li>
         <li>{{cartProduct.description}}</li>
@@ -14,6 +14,7 @@
         <li>{{cartProduct.category}}</li>
         <li>{{cartProduct.isAvailable}}</li>
       </ul>
+      <button (click)="removeFromCart(i)">Remove from cart</button>
   </div>
 </ng-template>
 

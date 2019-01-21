@@ -10,7 +10,6 @@ import { CartService } from '../../../cart/services/cart.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product: ProductModel;
-  @Input() index: number;
 
   constructor(private cartService: CartService) {}
 
@@ -22,10 +21,5 @@ export class ProductComponent implements OnInit {
 
   addToCard(product) {
     this.cartService.addToCart(product);
-  }
-
-  removeFromCart (index: number) {
-    console.log(index);
-    this.cartService.removeFromCart(index);
   }
 }
