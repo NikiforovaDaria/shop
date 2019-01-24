@@ -10,13 +10,12 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  cartProducts: ProductModel[];
+  @Input() cartProduct: ProductModel;
+  @Input() i: number;
 
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {
-    this.cartProducts = this.cartService.getCartProduct();
-  }
+  ngOnInit() { }
 
   removeFromCart(index) {
     this.cartService.removeFromCart(index);

@@ -12,6 +12,6 @@
 </div>
 <br>
 <div>
-  <button (click)="addToCard(product)">Add to cart</button>
+  <button (click)="addToCart(product)" [disabled]="!product.isAvailable">Add to cart</button>
 </div>
 <hr>

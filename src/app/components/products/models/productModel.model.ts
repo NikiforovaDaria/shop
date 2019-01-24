@@ -3,6 +3,7 @@ export interface IProduct {
   description: string;
   price: number;
   isAvailable: boolean;
+  color ?: string;
   category: Category;
 }
 

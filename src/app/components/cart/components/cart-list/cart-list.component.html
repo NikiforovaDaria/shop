@@ -1,0 +1,18 @@
+
+<ng-container *ngIf="cartProducts.length == 0; then isEmpty; else isNotEmpty">
+</ng-container>
+  <ng-template #isEmpty>
+    <div>
+      Cart is empty :(
+    </div>
+  </ng-template>
+  <ng-template #isNotEmpty>
+    <div>
+      <p>Total price: {{totalPrice}}</p>
+      <h3>Goods Amount: {{cartProducts.length}}</h3>
+      </div>
+      <div *ngFor='let cartProduct of cartProducts; let i = index'>
+        <app-cart [cartProduct]="cartProduct" [i]="i"></app-cart>
+      </div>
+  </ng-template>
+

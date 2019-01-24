@@ -11,9 +11,9 @@ export class ProductsService {
 
   constructor() {
     this.products = [
-      new ProductModel('Apple', 'Fruit', 12, false, Category.Food),
-      new ProductModel('peach', 'Fruit', 12, true, Category.Food),
-      new ProductModel('Apple', 'Fruit', 12, false, Category.Food)
+      new ProductModel('Apple', 'Fruit', 20, true, Category.Food),
+      new ProductModel('peach', 'Fruit', 120, false, Category.Food),
+      new ProductModel('Apple', 'Fruit', 300, true, Category.Food)
     ];
   }
 
