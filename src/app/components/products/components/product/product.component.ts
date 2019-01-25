@@ -9,7 +9,7 @@ import { ProductModel } from '../../models/productModel.model';
 })
 export class ProductComponent implements OnInit {
   @Input() product: ProductModel;
-  @Output() productEmitter = new EventEmitter <{product}> ();
+  @Output() productEmitter = new EventEmitter <{product: ProductModel}> ();
 
   constructor() {}
 
@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
     console.log('You bought the goods');
   }
 
-  addToCart(product) {
+  addToCart(product: ProductModel) {
     this.productEmitter.emit(
       {product}
     )

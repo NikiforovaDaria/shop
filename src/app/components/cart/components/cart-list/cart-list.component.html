@@ -12,7 +12,7 @@
       <h3>Goods Amount: {{cartProducts.length}}</h3>
       </div>
       <div *ngFor='let cartProduct of cartProducts; let i = index'>
-        <app-cart [cartProduct]="cartProduct" [i]="i"></app-cart>
+        <app-cart [cartProduct]="cartProduct" [i]="i" (addOnecartProductEmitter)="onAddOnecartProductEmitter(cartProduct)"></app-cart>
       </div>
   </ng-template>
 

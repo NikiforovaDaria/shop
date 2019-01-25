@@ -19,9 +19,10 @@ export class CartListComponent implements OnInit {
   }
 
 ngAfterContentChecked()  {
-    this.totalPrice = this.cartProducts.reduce((runningValue: number, cartProducts: ProductModel) => {
-      return runningValue = runningValue + (cartProducts.price);
-    }, 0);
+  this.totalPrice = this.cartService.getTotalPrice();
 }
+  onAddOnecartProductEmitter(cartProduct: ProductModel){
+    this.cartService.addOnecartProduct(cartProduct)
+  }
 
 }
