@@ -6,12 +6,8 @@
     <li>{{product.category}}</li>
     <li>{{product.isAvailable}}</li>
   </ul>
-  <button (click)='onBuy()'>
-    Buy
-  </button>
-</div>
-<br>
-<div>
-  <button (click)="addToCart(product)" [disabled]="!product.isAvailable">Add to cart</button>
+  <div>
+  <button class="btn btn-outline-info" (click)='onBuy()' [disabled]="!product.isAvailable">Buy</button>
+  <button class="btn btn-outline-info" (click)="addToCart(product)" [disabled]="!product.isAvailable">Add to cart</button>
 </div>
 <hr>

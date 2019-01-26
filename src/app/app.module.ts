@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from './components/products/products.module';
 import { CartModule } from './components/cart/cart.module';
 import { CartListComponent } from './components/cart/components/cart-list/cart-list.component';
+import { SharedModule } from './components/shared/sharedModule.module';
 
 
 @NgModule({
@@ -14,9 +15,11 @@ import { CartListComponent } from './components/cart/components/cart-list/cart-l
     BrowserModule,
     AppRoutingModule,
     ProductsModule,
-    CartModule
+    CartModule,
+    SharedModule
   ],
+  exports: [SharedModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

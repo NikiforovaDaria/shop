@@ -9,14 +9,26 @@ export class CartService {
 
   cartProducts: ProductModel[];
   totalPrice: number;
+  totalAmount: number;
 
   constructor() {
     this.cartProducts = [];
+    this.totalAmount = 0;
+    this.totalPrice = 0;
   }
 
   addToCart(cartProduct) {
-    if(cartProduct.isAvailable){
+    if (!this.cartProducts.includes(cartProduct)) {
       this.cartProducts.push(cartProduct);
+    }
+    this.addOneCartProduct(cartProduct);
+  }
+
+  removeFromCart(index: number) {
+    if (index > -1) {
+      this.totalAmount -= this.cartProducts[index].quantityInCart;
+      this.cartProducts[index].quantityInCart = 0;
+      this.cartProducts.splice(index, 1);
     }
   }
 
@@ -24,19 +36,30 @@ export class CartService {
     return this.cartProducts;
   }
 
-  getTotalPrice(){
-    return this.totalPrice = this.cartProducts.reduce((runningValue: number, cartProducts: ProductModel) => {
-      return runningValue = runningValue + ((cartProducts.price));
+  getTotalAmount() {
+    return this.totalAmount;
+  }
+  getTotalPrice() {
+    return this.totalPrice = this.cartProducts.reduce((currentValue: number, cartProduct: ProductModel) => {
+      return (currentValue = currentValue + cartProduct.price * cartProduct.quantityInCart);
     }, 0);
   }
 
-  removeFromCart(index: number) {
-    if (index > -1) {
-      this.cartProducts.splice(index, 1);
+  addOneCartProduct(cartProduct: ProductModel) {
+    cartProduct.quantityInCart++;
+    this.totalAmount++;
+    this.totalPrice += cartProduct.price;
+  }
+
+  deleteOneCartProduct(cartProduct: ProductModel, index: number) {
+    if (cartProduct.quantityInCart !== 0) {
+      cartProduct.quantityInCart--;
+      this.totalAmount--;
+      this.totalPrice -= cartProduct.price;
+    }
+    if (cartProduct.quantityInCart === 0) {
+      this.removeFromCart(index);
     }
   }
-  addOnecartProduct(cartProduct: ProductModel) {
-    this.totalPrice += cartProduct.price;
-    return this.totalPrice
-  }
+
 }

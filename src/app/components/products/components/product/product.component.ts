@@ -22,6 +22,6 @@ export class ProductComponent implements OnInit {
   addToCart(product: ProductModel) {
     this.productEmitter.emit(
       {product}
-    )
+    );
   }
 }

@@ -5,6 +5,7 @@ export interface IProduct {
   isAvailable: boolean;
   color ?: string;
   category: Category;
+  quantityInCart: number;
 }
 
 export enum Category {
@@ -16,5 +17,6 @@ export enum Category {
 export class ProductModel implements IProduct {
   constructor(public name: string, public description: string,
               public price: number, public isAvailable: boolean,
-              public category: Category) { }
+              public category: Category,
+              public quantityInCart: number) { }
 }

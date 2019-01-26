@@ -6,12 +6,15 @@
       <li>{{cartProduct.category}}</li>
       <li>{{cartProduct.isAvailable}}</li>
     </ul>
-    <div>
-      <button (click)="addOnecartProduct(cartProduct)">+</button>
-      <b>{{quantity}}</b>
-      <button>-</button>
-    </div>
-    <button (click)="removeFromCart(i)">Remove from cart</button>
+      <div>
+        <button class="btn btn-outline-primary" (click)="addOneCartProduct(cartProduct)">+</button>
+        <b>{{cartProduct.quantityInCart}}</b>
+        <button class="btn btn-outline-primary" (click)="deleteOneCartProduct(cartProduct, i)">-</button>
+      </div>
+      <div>
+        <button class="btn btn-outline-danger"(click)="removeFromCart(i)">Remove from cart</button>
+      </div>
+
 </div>
 
 

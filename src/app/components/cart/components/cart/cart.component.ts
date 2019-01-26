@@ -14,19 +14,25 @@ export class CartComponent implements OnInit {
 
   @Input() cartProduct: ProductModel;
   @Input() i: number;
-  @Output() addOnecartProductEmitter = new EventEmitter<{cartProduct:ProductModel}>();
+  @Output() addOneCartProductEmitter = new EventEmitter<{cartProduct: ProductModel}>();
+  @Output() deleteOneCartProductEmitter = new EventEmitter<{ cartProduct: ProductModel }>();
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.quantity = 1;
-   }
+  }
 
-   addOnecartProduct(cartProduct:ProductModel){
-     this.addOnecartProductEmitter.emit(
-       {cartProduct}
-     )
-   }
+  addOneCartProduct(cartProduct: ProductModel) {
+    this.addOneCartProductEmitter.emit(
+      {cartProduct}
+    );
+  }
+
+  deleteOneCartProduct(cartProduct: ProductModel, index: number) {
+    this.deleteOneCartProductEmitter.emit(
+      { cartProduct }
+    );
+  }
 
   removeFromCart(index: number) {
     this.cartService.removeFromCart(index);

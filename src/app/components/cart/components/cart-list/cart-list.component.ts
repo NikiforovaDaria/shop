@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ProductModel } from 'src/app/components/products/models/productModel.model';
 import { CartService } from '../../services/cart.service';
 
@@ -7,10 +7,11 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css']
 })
-export class CartListComponent implements OnInit {
+export class CartListComponent implements OnInit, AfterContentChecked {
 
   cartProducts: ProductModel[];
   totalPrice: number;
+  totalAmount: number;
 
   constructor(private cartService: CartService) { }
 
@@ -18,11 +19,15 @@ export class CartListComponent implements OnInit {
     this.cartProducts = this.cartService.getCartProduct();
   }
 
-ngAfterContentChecked()  {
-  this.totalPrice = this.cartService.getTotalPrice();
-}
-  onAddOnecartProductEmitter(cartProduct: ProductModel){
-    this.cartService.addOnecartProduct(cartProduct)
+  ngAfterContentChecked()  {
+    this.totalAmount = this.cartService.getTotalAmount();
+    this.totalPrice = this.cartService.getTotalPrice();
+  }
+  onAddOneCartProductEmitter(cartProduct: ProductModel) {
+    this.cartService.addOneCartProduct(cartProduct);
   }
 
+  onDeleteOneCartProductEmitter(cartProduct: ProductModel, i: number) {
+    this.cartService.deleteOneCartProduct(cartProduct, i);
+  }
 }

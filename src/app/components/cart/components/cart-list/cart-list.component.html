@@ -9,10 +9,15 @@
   <ng-template #isNotEmpty>
     <div>
       <p>Total price: {{totalPrice}}</p>
-      <h3>Goods Amount: {{cartProducts.length}}</h3>
+      <h3>Goods Amount: {{totalAmount}}</h3>
       </div>
-      <div *ngFor='let cartProduct of cartProducts; let i = index'>
-        <app-cart [cartProduct]="cartProduct" [i]="i" (addOnecartProductEmitter)="onAddOnecartProductEmitter(cartProduct)"></app-cart>
+      <div class="list-group float-left" *ngFor='let cartProduct of cartProducts; let i = index'>
+        <app-cart appChangeHoverStyle class="list-group-item"
+          [cartProduct]="cartProduct"
+          [i]="i"
+          (addOneCartProductEmitter)='onAddOneCartProductEmitter(cartProduct)'
+          (deleteOneCartProductEmitter)='onDeleteOneCartProductEmitter(cartProduct, i)'
+          ></app-cart>
       </div>
   </ng-template>
 
