@@ -23,11 +23,11 @@ export class CartListComponent implements OnInit, AfterContentChecked {
     this.totalAmount = this.cartService.getTotalAmount();
     this.totalPrice = this.cartService.getTotalPrice();
   }
-  onAddOneCartProductEmitter(cartProduct: ProductModel) {
-    this.cartService.addOneCartProduct(cartProduct);
+  onIncreaseCartProductEmitter(cartProduct: ProductModel) {
+    this.cartService.increaseCartProduct(cartProduct);
   }
 
-  onDeleteOneCartProductEmitter(cartProduct: ProductModel, i: number) {
-    this.cartService.deleteOneCartProduct(cartProduct, i);
+  onDecreaseCartProductEmitter(cartProduct: ProductModel, i: number) {
+    this.cartService.decreaseCartProduct(cartProduct, i);
   }
 }

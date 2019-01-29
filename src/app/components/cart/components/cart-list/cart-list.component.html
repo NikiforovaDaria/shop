@@ -15,8 +15,8 @@
         <app-cart appChangeHoverStyle class="list-group-item"
           [cartProduct]="cartProduct"
           [i]="i"
-          (addOneCartProductEmitter)='onAddOneCartProductEmitter(cartProduct)'
-          (deleteOneCartProductEmitter)='onDeleteOneCartProductEmitter(cartProduct, i)'
+          (increaseCartProductEmitter)='onIncreaseCartProductEmitter(cartProduct)'
+          (decreaseCartProductEmitter)='onDecreaseCartProductEmitter(cartProduct, i)'
           ></app-cart>
       </div>
   </ng-template>

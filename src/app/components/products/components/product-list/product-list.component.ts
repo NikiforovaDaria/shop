@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onProductEmitter(product) {
+    product.quantity--;
     this.cartService.addToCart(product);
   }
 }

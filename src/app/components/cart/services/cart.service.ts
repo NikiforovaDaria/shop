@@ -21,13 +21,17 @@ export class CartService {
     if (!this.cartProducts.includes(cartProduct)) {
       this.cartProducts.push(cartProduct);
     }
-    this.addOneCartProduct(cartProduct);
+    cartProduct.quantityInCart++;
+    this.totalAmount++;
+    this.totalPrice += cartProduct.price;
   }
 
-  removeFromCart(index: number) {
+  removeFromCart(cartProduct: ProductModel, index: number) {
     if (index > -1) {
-      this.totalAmount -= this.cartProducts[index].quantityInCart;
-      this.cartProducts[index].quantityInCart = 0;
+      const {quantityInCart} = cartProduct;
+      this.totalAmount -= quantityInCart;
+      cartProduct.quantity += quantityInCart;
+      cartProduct.quantityInCart = 0;
       this.cartProducts.splice(index, 1);
     }
   }
@@ -45,20 +49,26 @@ export class CartService {
     }, 0);
   }
 
-  addOneCartProduct(cartProduct: ProductModel) {
+  getIsAvaliable() {
+
+  }
+
+  increaseCartProduct(cartProduct: ProductModel) {
+    cartProduct.quantity--;
     cartProduct.quantityInCart++;
     this.totalAmount++;
     this.totalPrice += cartProduct.price;
   }
 
-  deleteOneCartProduct(cartProduct: ProductModel, index: number) {
+  decreaseCartProduct(cartProduct: ProductModel, index: number) {
     if (cartProduct.quantityInCart !== 0) {
       cartProduct.quantityInCart--;
+      cartProduct.quantity++;
       this.totalAmount--;
       this.totalPrice -= cartProduct.price;
     }
     if (cartProduct.quantityInCart === 0) {
-      this.removeFromCart(index);
+      this.removeFromCart(cartProduct, index);
     }
   }
 

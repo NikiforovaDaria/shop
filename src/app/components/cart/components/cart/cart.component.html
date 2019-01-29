@@ -7,12 +7,23 @@
       <li>{{cartProduct.isAvailable}}</li>
     </ul>
       <div>
-        <button class="btn btn-outline-primary" (click)="addOneCartProduct(cartProduct)">+</button>
+        <button
+          class="btn btn-outline-primary"
+          (click)="increaseCartProduct(cartProduct)"
+          [disabled]="!cartProduct.isAvailable"
+        >+</button>
         <b>{{cartProduct.quantityInCart}}</b>
-        <button class="btn btn-outline-primary" (click)="deleteOneCartProduct(cartProduct, i)">-</button>
+        <button
+          class="btn btn-outline-primary"
+          (click)="decreaseCartProduct(cartProduct, i)"
+        >-</button>
       </div>
       <div>
-        <button class="btn btn-outline-danger"(click)="removeFromCart(i)">Remove from cart</button>
+        <button
+          class="btn btn-outline-danger"
+          (click)="removeFromCart(cartProduct, i)"
+        >Remove from cart
+        </button>
       </div>
 
 </div>
