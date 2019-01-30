@@ -10,12 +10,12 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit, DoCheck {
 
-  quantity: number;
-
   @Input() cartProduct: ProductModel;
   @Input() i: number;
   @Output() increaseCartProductEmitter = new EventEmitter<{cartProduct: ProductModel}>();
   @Output() decreaseCartProductEmitter = new EventEmitter<{ cartProduct: ProductModel }>();
+
+  quantity: number;
 
   constructor(private cartService: CartService) {}
 

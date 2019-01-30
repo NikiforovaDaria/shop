@@ -8,6 +8,7 @@ import { ProductModel } from '../../models/productModel.model';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit, DoCheck {
+
   @Input() product: ProductModel;
   @Output() productEmitter = new EventEmitter <{product: ProductModel}> ();
 
@@ -19,7 +20,7 @@ export class ProductComponent implements OnInit, DoCheck {
     this.product.quantity === 0 ? (this.product.isAvailable = false) : (this.product.isAvailable = true);
 
   }
-  onBuy() {
+  toBuy() {
     console.log('You bought the goods');
   }
 
