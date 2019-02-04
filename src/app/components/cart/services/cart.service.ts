@@ -17,13 +17,25 @@ export class CartService {
     this.totalPrice = 0;
   }
 
-  addToCart(cartProduct) {
-    if (!this.cartProducts.includes(cartProduct)) {
-      this.cartProducts.push(cartProduct);
+  addToCart(cartProduct, i) {
+
+    const copyCartProduct: ProductModel = Object.assign({}, cartProduct, {id: i});
+    console.log("price: ", copyCartProduct.price);
+
+    console.log('copyCartProduct: ', copyCartProduct);
+    console.log('this.cartProducts.: ', this.cartProducts);
+
+    const x = this.cartProducts.findIndex(el => {
+      return el.id === i;
+    });
+    if (x < 0) {
+      this.cartProducts.push(copyCartProduct);
     }
-    cartProduct.quantityInCart++;
+    // cartProduct.quantityInCart++;
     this.totalAmount++;
     this.totalPrice += cartProduct.price;
+    console.log('this.totalPrice: ', this.totalPrice);
+
   }
 
   removeFromCart(cartProduct: ProductModel, index: number) {
@@ -49,12 +61,9 @@ export class CartService {
     }, 0);
   }
 
-  getIsAvaliable() {
-
-  }
-
   increaseCartProduct(cartProduct: ProductModel) {
     cartProduct.quantity--;
+    cartProduct.quantity === 0 ? (cartProduct.isAvailable = false) : (cartProduct.isAvailable = true);
     cartProduct.quantityInCart++;
     this.totalAmount++;
     this.totalPrice += cartProduct.price;
@@ -62,8 +71,9 @@ export class CartService {
 
   decreaseCartProduct(cartProduct: ProductModel, index: number) {
     if (cartProduct.quantityInCart !== 0) {
-      cartProduct.quantityInCart--;
       cartProduct.quantity++;
+      cartProduct.quantity === 0 ? (cartProduct.isAvailable = false) : (cartProduct.isAvailable = true);
+      cartProduct.quantityInCart--;
       this.totalAmount--;
       this.totalPrice -= cartProduct.price;
     }

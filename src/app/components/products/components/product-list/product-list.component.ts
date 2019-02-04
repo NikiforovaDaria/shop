@@ -20,8 +20,9 @@ export class ProductListComponent implements OnInit {
     this.products = this.productService.getProducts();
   }
 
-  onProductEmitter(product) {
+  onProductEmitter(product: ProductModel, i: number) {
     product.quantity--;
-    this.cartService.addToCart(product);
+    product.quantity === 0 ? (product.isAvailable = false) : (product.isAvailable = true);
+    this.cartService.addToCart(product, i);
   }
 }

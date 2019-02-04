@@ -7,6 +7,7 @@ export interface IProduct {
   category: Category;
   quantityInCart: number;
   quantity: number;
+  id: number;
 }
 
 export enum Category {
@@ -20,5 +21,6 @@ export class ProductModel implements IProduct {
               public price: number, public isAvailable: boolean,
               public category: Category,
               public quantityInCart: number,
-              public quantity: number) { }
+              public quantity: number,
+              public id: number) { }
 }

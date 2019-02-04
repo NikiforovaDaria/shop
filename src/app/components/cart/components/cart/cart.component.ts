@@ -8,31 +8,27 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, DoCheck {
+export class CartComponent implements OnInit {
 
   quantity: number;
 
   @Input() cartProduct: ProductModel;
   @Input() i: number;
-  @Output() increaseCartProductEmitter = new EventEmitter<{cartProduct: ProductModel}>();
-  @Output() decreaseCartProductEmitter = new EventEmitter<{ cartProduct: ProductModel }>();
+  @Output() increaseCartProductEmitter = new EventEmitter<ProductModel>();
+  @Output() decreaseCartProductEmitter = new EventEmitter<ProductModel>();
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
   }
 
-  ngDoCheck() {
-    this.cartProduct.quantity === 0 ? (this.cartProduct.isAvailable = false) : (this.cartProduct.isAvailable = true);
-  }
-
   increaseCartProduct(cartProduct: ProductModel) {
-    this.increaseCartProductEmitter.emit({ cartProduct });
+    this.increaseCartProductEmitter.emit(cartProduct);
   }
 
   decreaseCartProduct(cartProduct: ProductModel, index: number) {
     this.decreaseCartProductEmitter.emit(
-      { cartProduct }
+      cartProduct
     );
   }
 

@@ -1,9 +1,10 @@
 
-<div class="list-group d-inline-block" *ngFor="let product of products; let i = index">
+<div class='list-group d-inline-block' *ngFor='let product of products; let i = index'>
   <app-product
-    class="list-group-item"
-    [product]="product"
-    (productEmitter)="onProductEmitter(product)"
+    class='list-group-item'
+    [product]='product'
+    [i]='i'
+    (productEmitter)='onProductEmitter(product, i)'
   >
 </app-product>
 </div>

@@ -8,6 +8,6 @@
   </ul>
   <div>
   <button class="btn btn-outline-info" (click)='onBuy()' [disabled]="!product.isAvailable">Buy</button>
-  <button class="btn btn-outline-info" (click)="addToCart(product)" [disabled]="!product.isAvailable">Add to cart</button>
+  <button class="btn btn-outline-info" (click)="addToCart(product, i)" [disabled]="!product.isAvailable">Add to cart</button>
 </div>
 <hr>

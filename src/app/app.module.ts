@@ -5,12 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsModule } from './components/products/products.module';
 import { CartModule } from './components/cart/cart.module';
-import { CartListComponent } from './components/cart/components/cart-list/cart-list.component';
 import { SharedModule } from './components/shared/sharedModule.module';
 
 
 @NgModule({
-  declarations: [AppComponent, CartListComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,7 +17,7 @@ import { SharedModule } from './components/shared/sharedModule.module';
     CartModule,
     SharedModule
   ],
-  exports: [SharedModule],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

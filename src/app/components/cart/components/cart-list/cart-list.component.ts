@@ -7,11 +7,9 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css']
 })
-export class CartListComponent implements OnInit, AfterContentChecked {
+export class CartListComponent implements OnInit {
 
   cartProducts: ProductModel[];
-  totalPrice: number;
-  totalAmount: number;
 
   constructor(private cartService: CartService) { }
 
@@ -19,10 +17,14 @@ export class CartListComponent implements OnInit, AfterContentChecked {
     this.cartProducts = this.cartService.getCartProduct();
   }
 
-  ngAfterContentChecked()  {
-    this.totalAmount = this.cartService.getTotalAmount();
-    this.totalPrice = this.cartService.getTotalPrice();
+  get totalPrice () {
+    return this.cartService.getTotalPrice();
   }
+
+  get totalAmount() {
+    return this.cartService.getTotalAmount();
+  }
+
   onIncreaseCartProductEmitter(cartProduct: ProductModel) {
     this.cartService.increaseCartProduct(cartProduct);
   }

@@ -9,7 +9,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 @NgModule({
   imports: [CommonModule],
   declarations: [ProductComponent, ProductListComponent],
-  providers: [ProductsService],
-  exports: [ProductComponent, ProductListComponent]
+  providers: [],
+  exports: [ProductListComponent]
 })
 export class ProductsModule {}
