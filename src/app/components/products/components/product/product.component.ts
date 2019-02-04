@@ -8,7 +8,8 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, DoCheck {
+
   @Input() product: ProductModel;
   @Input() i: number;
   @Output() productEmitter = new EventEmitter <ProductModel> ();
@@ -17,7 +18,11 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {}
 
-  onBuy() {
+  ngDoCheck () {
+    this.product.quantity === 0 ? (this.product.isAvailable = false) : (this.product.isAvailable = true);
+
+  }
+  toBuy() {
     console.log('You bought the goods');
   }
 

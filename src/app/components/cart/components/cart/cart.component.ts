@@ -10,12 +10,12 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  quantity: number;
-
   @Input() cartProduct: ProductModel;
   @Input() i: number;
   @Output() increaseCartProductEmitter = new EventEmitter<ProductModel>();
   @Output() decreaseCartProductEmitter = new EventEmitter<ProductModel>();
+
+  quantity: number;
 
   constructor(private cartService: CartService) {}
 
