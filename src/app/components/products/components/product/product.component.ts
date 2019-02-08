@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { ProductModel } from '../../models/productModel.model';
 
@@ -7,7 +7,7 @@ import { ProductModel } from '../../models/productModel.model';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit, DoCheck {
+export class ProductComponent implements OnInit{
 
   @Input() product: ProductModel;
   @Input() i: number;
@@ -17,10 +17,6 @@ export class ProductComponent implements OnInit, DoCheck {
 
   ngOnInit() {}
 
-  ngDoCheck () {
-    this.product.quantity === 0 ? (this.product.isAvailable = false) : (this.product.isAvailable = true);
-
-  }
   toBuy() {
     console.log('You bought the goods');
   }
