@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
 
 import { ProductModel } from '../../models/productModel.model';
-import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +13,7 @@ export class ProductComponent implements OnInit, DoCheck {
   @Input() i: number;
   @Output() productEmitter = new EventEmitter <ProductModel> ();
 
-  constructor(private productService: ProductsService) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -26,7 +25,7 @@ export class ProductComponent implements OnInit, DoCheck {
     console.log('You bought the goods');
   }
 
-  addToCart(product: ProductModel, index: number) {
+  addToCart(product: ProductModel) {
     this.productEmitter.emit(
       product
     );

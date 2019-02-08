@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
     );
   }
 
-  removeFromCart(cartProduct: ProductModel, index: number) {
-    this.cartService.removeFromCart(cartProduct, index);
+  removeFromCart(cartProduct: ProductModel) {
+    this.cartService.removeFromCart(cartProduct);
   }
 }

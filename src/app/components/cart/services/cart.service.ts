@@ -17,34 +17,34 @@ export class CartService {
     this.totalPrice = 0;
   }
 
-  addToCart(cartProduct, i) {
+  addToCart(cartProduct: ProductModel) {
+    const copyCartProduct = Object.assign(cartProduct, {quantity:  --cartProduct.quantity,
+                                              quantityInCart: ++cartProduct.quantityInCart,
+                                              isAvailable: cartProduct.quantity === 0 ?
+                                              (cartProduct.isAvailable = false) :
+                                              (cartProduct.isAvailable = true)
+                                              });
 
-    const copyCartProduct: ProductModel = Object.assign({}, cartProduct, {id: i});
-    console.log("price: ", copyCartProduct.price);
+    const i = this.cartProducts.findIndex(p => p.id === cartProduct.id);
 
-    console.log('copyCartProduct: ', copyCartProduct);
-    console.log('this.cartProducts.: ', this.cartProducts);
-
-    const x = this.cartProducts.findIndex(el => {
-      return el.id === i;
-    });
-    if (x < 0) {
+    if (i < 0) {
       this.cartProducts.push(copyCartProduct);
     }
-    // cartProduct.quantityInCart++;
-    this.totalAmount++;
-    this.totalPrice += cartProduct.price;
-    console.log('this.totalPrice: ', this.totalPrice);
 
+    this.cartProducts.splice(i, 1, copyCartProduct);
+    this.totalPrice += cartProduct.price;
+    this.totalAmount++;
   }
 
-  removeFromCart(cartProduct: ProductModel, index: number) {
-    if (index > -1) {
+  removeFromCart(cartProduct: ProductModel) {
+    const i = this.cartProducts.findIndex(p => p.id === cartProduct.id);
+
+    if (i > -1) {
       const {quantityInCart} = cartProduct;
       this.totalAmount -= quantityInCart;
       cartProduct.quantity += quantityInCart;
       cartProduct.quantityInCart = 0;
-      this.cartProducts.splice(index, 1);
+      this.cartProducts.splice(i, 1);
     }
   }
 
@@ -62,24 +62,32 @@ export class CartService {
   }
 
   increaseCartProduct(cartProduct: ProductModel) {
-    cartProduct.quantity--;
-    cartProduct.quantity === 0 ? (cartProduct.isAvailable = false) : (cartProduct.isAvailable = true);
-    cartProduct.quantityInCart++;
+
+    const i = this.cartProducts.findIndex(p => p.id === cartProduct.id);
+
+    if (i > -1) {
+      cartProduct.quantity--;
+      cartProduct.quantity === 0 ? (cartProduct.isAvailable = false) : (cartProduct.isAvailable = true);
+      cartProduct.quantityInCart++;
+    }
+
     this.totalAmount++;
     this.totalPrice += cartProduct.price;
   }
 
   decreaseCartProduct(cartProduct: ProductModel, index: number) {
-    if (cartProduct.quantityInCart !== 0) {
+
+    const i = this.cartProducts.findIndex(p => p.id === cartProduct.id);
+
+    if (i > -1 && cartProduct.quantityInCart !== 0) {
       cartProduct.quantity++;
       cartProduct.quantity === 0 ? (cartProduct.isAvailable = false) : (cartProduct.isAvailable = true);
       cartProduct.quantityInCart--;
       this.totalAmount--;
       this.totalPrice -= cartProduct.price;
     }
-    if (cartProduct.quantityInCart === 0) {
-      this.removeFromCart(cartProduct, index);
+    if (i > -1 && cartProduct.quantityInCart === 0) {
+      this.removeFromCart(cartProduct);
     }
   }
-
 }
