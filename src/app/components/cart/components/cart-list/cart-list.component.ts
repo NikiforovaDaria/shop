@@ -1,20 +1,25 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ProductModel } from 'src/app/components/products/models/productModel.model';
 import { CartService } from '../../services/cart.service';
+import { GeneratorService } from 'src/app/core/services/generator.service';
+import { generatorServiceProvider } from 'src/app/core/services/generator.service.provider';
 
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.css']
+  styleUrls: ['./cart-list.component.css'],
+  providers: [{provide: GeneratorService, useFactory: generatorServiceProvider(10),
+    deps: []}]
 })
 export class CartListComponent implements OnInit {
 
   cartProducts: ProductModel[];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private c: GeneratorService) { }
 
   ngOnInit() {
     this.cartProducts = this.cartService.getCartProduct();
+    console.log(this.c)
   }
 
   get totalPrice () {

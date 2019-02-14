@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from './components/products/products.module';
 import { CartModule } from './components/cart/cart.module';
 import { SharedModule } from './components/shared/sharedModule.module';
+import { generatorServiceProvider } from './core/services/generator.service.provider';
 
 
 @NgModule({
