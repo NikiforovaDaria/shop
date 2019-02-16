@@ -8,15 +8,15 @@ export class LocalStorageService {
   constructor() { }
 
   get (): Array<any> {
-    return JSON.parse(localStorage.getItem('products'))
+    return JSON.parse(localStorage.getItem('products'));
   }
 
-  set (key: string, data: Array<any>){
+  set (key: string, data: Array<any>) {
     return localStorage.setItem(key, JSON.stringify(data));
   }
 
-  removeItem(id: number){
+  removeItem(id: number) {
     let products = this.get ();
-    products = products.filter(p => p.id !== id)
+    products = products.filter(p => p.id !== id);
   }
 }
