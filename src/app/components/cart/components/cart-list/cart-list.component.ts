@@ -1,24 +1,27 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProductModel } from 'src/app/components/products/models/productModel.model';
 import { CartService } from '../../services/cart.service';
-import { RandomNumberService } from 'src/app/core/services/random-number.service';
-import { GeneratorService, Data_Top3, generatorServiceFactory } from 'src/app/core/services/generator.service';
+import { GeneratorService } from 'src/app/core/services/generator.service';
+import { RandomStringFactory, Random_String } from '../../../../core/services/random-string-factory';
 
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css'],
-  providers: [GeneratorService, {provide: Data_Top3, useFactory: generatorServiceFactory, deps: [RandomNumberService]}]
+  providers: [
+    GeneratorService,
+    { provide: Random_String, useFactory: RandomStringFactory(12), deps: [GeneratorService] }
+  ]
 })
 export class CartListComponent implements OnInit {
 
   cartProducts: ProductModel[];
 
-  constructor(private cartService: CartService, @Inject(Data_Top3) private dataTop3: any[]) { }
+  constructor(private cartService: CartService, @Inject(Random_String) private randomString: any[]) { }
 
   ngOnInit() {
     this.cartProducts = this.cartService.getCartProduct();
-    console.log(111, this.dataTop3)
+    console.log(this.randomString);
   }
 
   get totalPrice () {

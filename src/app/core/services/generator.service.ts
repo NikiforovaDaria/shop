@@ -1,25 +1,18 @@
-import { Injectable, InjectionToken } from '@angular/core';
-import { RandomNumberService } from './random-number.service';
+import { Injectable } from '@angular/core';
 
-export const Data_Top3 = new InjectionToken<any[]>('DataTop3');
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GeneratorService {
+  constructor() { }
 
-  constructor(private length: number) { console.log(length)}
-
-  getRandomSrting(): string {
-    let length = this.length;
-    let text = "";
-    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for(let i = 0; i < length; i++) {
+  getRandomSrting(randomNumber: number): string {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < randomNumber; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-    console.log(3434, text)
     return text;
   }
-}
-
-export let generatorServiceFactory = (randomNumberService: RandomNumberService) => {
-  return new GeneratorService(randomNumberService.number);
 }
