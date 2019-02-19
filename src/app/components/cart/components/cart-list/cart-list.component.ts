@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/components/products/models/productModel.model';
 import { CartService } from '../../services/cart.service';
 
@@ -8,6 +8,8 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.css'],
 })
 export class CartListComponent implements OnInit {
+  measures = ['price', 'quantityInCart', 'name'];
+  selectedMeasure = 'price';
 
   cartProducts: ProductModel[];
 

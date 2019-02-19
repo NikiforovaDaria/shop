@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { CartComponent } from './components/cart/cart.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
-import { CartService } from './services/cart.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, SharedModule],
   declarations: [CartComponent, CartListComponent],
   providers: [],
   exports: [CartComponent, CartListComponent]

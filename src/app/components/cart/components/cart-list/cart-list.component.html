@@ -8,10 +8,19 @@
   </ng-template>
   <ng-template #isNotEmpty>
     <div>
-      <p>Total price: {{totalPrice}}</p>
+        Order By:
+          <select [(ngModel)]="selectedMeasure">
+            <option *ngFor="let measure of measures" [ngValue]="measure">
+                {{measure === 'quantityInCart' ? 'quantity' : measure}}
+            </option>
+          </select>
+
+      <p>Total price: {{totalPrice | currency:'USD' }}</p>
       <h3>Goods Amount: {{totalAmount}}</h3>
       </div>
-      <div class="list-group float-left" *ngFor='let cartProduct of cartProducts; let i = index'>
+      <div class="list-group float-left"
+            *ngFor="let cartProduct of cartProducts | orderBy : selectedMeasure; let i = index"
+            >
         <app-cart appChangeHoverStyle class="list-group-item"
           [cartProduct]="cartProduct"
           [i]="i"
