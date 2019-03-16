@@ -7,11 +7,11 @@ import { ProductModel } from '../../models/productModel.model';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit{
-
+export class ProductComponent implements OnInit {
   @Input() product: ProductModel;
   @Input() i: number;
-  @Output() productEmitter = new EventEmitter <ProductModel> ();
+  @Output() productEmitter = new EventEmitter<ProductModel>();
+  @Output() aboutProductEmitter = new EventEmitter<ProductModel>();
 
   constructor() {}
 
@@ -22,8 +22,10 @@ export class ProductComponent implements OnInit{
   }
 
   addToCart(product: ProductModel) {
-    this.productEmitter.emit(
-      product
-    );
+    this.productEmitter.emit(product);
+  }
+
+  about(product: ProductModel) {
+    this.aboutProductEmitter.emit(product);
   }
 }

@@ -7,7 +7,10 @@
     <li>{{product.isAvailable}}</li>
   </ul>
   <div>
-  <button class="btn btn-outline-info" (click)='toBuy()' [disabled]="!product.isAvailable">Buy</button>
-  <button class="btn btn-outline-info" (click)="addToCart(product)" [disabled]="!product.isAvailable">Add to cart</button>
+  <button class='btn btn-outline-primary' (click)='toBuy()' [disabled]='!product.isAvailable'>Buy</button>
+  <br>
+  <button class='btn btn-outline-primary' (click)='addToCart(product)' [disabled]='!product.isAvailable'>Add to cart</button>
+  <br>
+  <button class='btn btn-outline-info' (click)='about(product)'>About</button>
 </div>
 <hr>

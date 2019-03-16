@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ProductsService } from '../../services/products.service';
 import { ProductModel } from '../../models/productModel.model';
@@ -13,7 +14,8 @@ export class ProductListComponent implements OnInit {
 
   products: Promise<Array<ProductModel>>;
 
-  constructor(private productService: ProductsService,
+  constructor(private router: Router,
+              private productService: ProductsService,
               private cartService: CartService) { }
 
   ngOnInit() {
@@ -22,5 +24,10 @@ export class ProductListComponent implements OnInit {
 
   onProductEmitter(product: ProductModel) {
     this.cartService.addToCart(product);
+  }
+
+  onAboutProductEmitter(product: ProductModel){
+    const link = ['/product', product.id];
+    this.router.navigate(link);
   }
 }

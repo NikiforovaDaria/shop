@@ -1,0 +1,20 @@
+<ul class='list-group'>
+  <li class='list-group-item'><b class='text-info'>Name:</b> {{product.name}}</li>
+  <li class='list-group-item'><b class='text-info'>Description:</b> {{product.description}}</li>
+  <li class='list-group-item'><b class='text-info'>Price:</b> {{product.price}}</li>
+  <li class='list-group-item'><b class='text-info'>Color:</b>
+      <ng-container *ngIf='color; else elseTemplate'>
+        {{product.color}}
+      </ng-container>
+      <ng-template #elseTemplate>
+        no color
+      </ng-template>
+    </li>
+  <li class='list-group-item'><b class='text-info'>Category:</b> {{product.category}}</li>
+  <li class='list-group-item'><b class='text-info'>Quantity in cart:</b> {{product.quantityInCart}}</li>
+  <li class='list-group-item'><b class='text-info'>Quantity in shop:</b> {{product.quantity}}</li>
+  <li class='list-group-item'><b class='text-info'>Avaliable to buy:</b> {{product.isAvailable}}</li>
+</ul>
+<button class='btn btn-outline-success' (click)='onGoBack()'>Go Back</button>
+<button class='btn btn-outline-success' (click)='onDisplayFeedback()' >Leave Feedback</button>
+
