@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalStorageService {
-
   constructor() { }
 
   get (): Array<any> {
@@ -15,8 +14,7 @@ export class LocalStorageService {
     return localStorage.setItem(key, JSON.stringify(data));
   }
 
-  removeItem(id: number) {
-    let products = this.get ();
-    products = products.filter(p => p.id !== id);
+  removeItem(key: string) {
+    localStorage.removeItem(key);
   }
 }

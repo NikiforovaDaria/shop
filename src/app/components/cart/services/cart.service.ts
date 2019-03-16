@@ -7,15 +7,11 @@ import { ProductModel } from '../../products/models/productModel.model';
 })
 export class CartService {
 
-  cartProducts: ProductModel[];
-  totalPrice: number;
-  totalAmount: number;
+  cartProducts: ProductModel[] = [];
+  totalPrice: number = 0;
+  totalAmount: number = 0;
 
-  constructor() {
-    this.cartProducts = [];
-    this.totalAmount = 0;
-    this.totalPrice = 0;
-  }
+  constructor() {}
 
   addToCart(cartProduct: ProductModel) {
     const copyCartProduct = Object.assign(cartProduct, {quantity:  --cartProduct.quantity,
