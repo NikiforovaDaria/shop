@@ -18,7 +18,7 @@ export class ProductAboutComponent implements OnInit {
   constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    // this.product = new ProductModel();
+    this.product = new ProductModel('', '', null, null, null, null, null, null);
 
     this.route.paramMap
       .pipe(
