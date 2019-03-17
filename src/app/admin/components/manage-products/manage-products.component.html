@@ -1,0 +1,17 @@
+
+<button class='btn btn-outline-danger' (click)="addNewProduct()">ADD NEW PRODUCT</button>
+<br>
+<div class='list-group d-inline-block' *ngFor='let product of products | async; let i = index'>
+  <ul class='list-group-item'>
+    <li >{{product.name}}</li>
+    <li>{{product.description}}</li>
+    <li>{{product.price}}</li>
+    <li>{{product.category}}</li>
+    <li>{{product.isAvailable}}</li>
+  </ul>
+<button class='btn btn-outline-warning'>Edit</button>
+</div>
+<router-outlet></router-outlet>
+
+
+

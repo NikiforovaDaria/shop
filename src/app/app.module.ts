@@ -10,21 +10,26 @@ import { CartModule } from './components/cart/cart.module';
 import { SharedModule } from './components/shared/shared.module';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { AdminModule } from './admin/admin.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactUsComponent,
     FeedbackComponent
+    
   ],
   imports: [
     BrowserModule,
     ProductsModule,
+    CoreModule,
     CartModule,
     SharedModule,
+    AdminModule,
     AppRoutingModule
   ],
-  exports: [],
+  exports: [ProductsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -28,7 +28,7 @@ export class ProductAboutComponent implements OnInit {
         err => console.log(err)
       );
 
-  }
+    }
 
   onGoBack() {
     this.router.navigate(['/product-list']).then(() => this.router.navigate([{ outlets: { feedback: null}}]));
