@@ -22,16 +22,16 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {
     this.product = new ProductModel('', '', null, null, null, null, null, null);
 
-    // this.route.paramMap
-    //   .pipe(
-    //     switchMap((params: Params) =>
-    //       this.productsService.getProduct(+params.get('productID'))
-    //     )
-    //   )
-    //   .subscribe(
-    //     product => (this.product = { ...product }),
-    //     err => console.log(err)
-    //   );
+    this.route.paramMap
+      .pipe(
+        switchMap((params: Params) =>
+          this.productsService.getProduct(+params.get('productID'))
+        )
+      )
+      .subscribe(
+        product => (this.product = { ...product }),
+        err => console.log(err)
+      );
   }
 
     onGoBack() {
