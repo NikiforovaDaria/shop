@@ -8,6 +8,7 @@ import { ProductFormComponent } from '../components/products/components/product-
 
 import { ProductResolveGuard } from './guards/product-resolve.guard';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { OrderComponent } from '../components/order/order.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
         children: [
           { path: 'products',
           component: ManageProductsComponent,
+          },
+          { path: 'order',
+          component: OrderComponent,
           },
           {
             path: 'product/add',
