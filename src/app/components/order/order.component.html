@@ -1,0 +1,8 @@
+
+
+  You have to order <b> {{totalOrderAmount}} </b> products:
+  <div *ngFor='let orderProduct of orderProducts; let i = index'>
+    <div *ngIf='orderProduct.quantityInCart'>
+        <p>{{orderProduct.name}}: {{orderProduct.quantityInCart}}</p>
+    </div>
+  </div>

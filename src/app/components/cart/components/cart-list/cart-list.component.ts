@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/components/products/models/productModel.model';
 import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
@@ -13,7 +14,7 @@ export class CartListComponent implements OnInit {
 
   cartProducts: ProductModel[];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit() {
     this.cartProducts = this.cartService.getCartProduct();
@@ -33,5 +34,10 @@ export class CartListComponent implements OnInit {
 
   onDecreaseCartProductEmitter(cartProduct: ProductModel, i: number) {
     this.cartService.decreaseCartProduct(cartProduct, i);
+  }
+
+  onGoToOrder(){
+    const link = ['cart/order'];
+    this.router.navigate(link);
   }
 }

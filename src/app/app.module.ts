@@ -12,13 +12,14 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactUsComponent,
-    FeedbackComponent
-    
+    FeedbackComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
