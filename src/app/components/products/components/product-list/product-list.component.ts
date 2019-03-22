@@ -12,6 +12,7 @@ import { CartService } from 'src/app/components/cart/services/cart.service';
 })
 export class ProductListComponent implements OnInit {
 
+  // products: ProductModel[];
   products: Promise<Array<ProductModel>>;
 
   constructor(private router: Router,
@@ -19,7 +20,9 @@ export class ProductListComponent implements OnInit {
               private cartService: CartService) { }
 
   ngOnInit() {
+
     this.products = this.productService.getProducts();
+
   }
 
   onProductEmitter(product: ProductModel) {

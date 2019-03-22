@@ -9,8 +9,8 @@ import { ProductModel } from 'src/app/components/products/models/productModel.mo
   styleUrls: ['./manage-products.component.css']
 })
 export class ManageProductsComponent implements OnInit {
+  // products: ProductModel[];
   products: Promise<Array<ProductModel>>;
-
   constructor(
     private router: Router,
     private productService: ProductsService

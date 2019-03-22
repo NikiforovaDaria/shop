@@ -26,6 +26,10 @@
         <label for='price'>Quantity</label>
         <input type='number' class='form-control' id='quantity' name='quantity' placeholder='Quantity' required [(ngModel)]='product.quantity'>
       </div>
+      <div class='form-group'>
+        <label for='category'>Category</label>
+        <input type='text' class='form-control' id='category' name='category' placeholder='Category' required [(ngModel)]='product.category'>
+      </div>
       <button type='submit' class='btn btn-primary' form='product-form' [disabled]='form.invalid'>Save
       </button>
       <button type='button' class='btn btn-primary' (click)='onGoBack()'>Go Back
