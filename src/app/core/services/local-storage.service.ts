@@ -7,9 +7,9 @@ import { ProductModel } from 'src/app/components/products/models/productModel.mo
 export class LocalStorageService {
   constructor() { }
 
-  // get () {
+ 
   get (): Array<any> {
-    return JSON.parse(localStorage.getItem('product'));
+    return JSON.parse(localStorage.getItem('products'));
   }
 
   set (key: string, data: Array<ProductModel>) {

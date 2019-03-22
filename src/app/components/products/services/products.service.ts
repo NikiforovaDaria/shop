@@ -9,22 +9,21 @@ const products = [
   new ProductModel('peach', 'Fruit', 120, false, Category.Food, 0, 4, 2),
   new ProductModel('Apple', 'Fruit', 300, true, Category.Food, 0, 2, 3)
 ];
-
-const productsPromise = Promise.resolve(products);
-
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
   maxId:number;
+  productsPromise;
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService) {
+    const localStorage = this.localStorageService.get();
+    this.productsPromise = Promise.resolve(localStorage);
+   }
 
-  getProducts (): Promise<ProductModel[]> {
-    // let localStorage = this.localStorageService.get();
-    // return this.localStorage === null ? productsPromise : this.localStorage.product;
-    return productsPromise;
+  getProducts ():  Promise<ProductModel[]> {
+    return this.productsPromise;
   }
 
 
