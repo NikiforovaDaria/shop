@@ -39,14 +39,13 @@ export class ProductsService {
   updateProduct(product: ProductModel){
     this.localStorageService.set('products', products)
     const idx = products.findIndex(p => p.id === product.id);
-
     if (idx > -1) {
       products.splice(idx, 1, product);
     }
   }
 
   createProduct(product: ProductModel){
-    this.localStorageService.set('products', products)
     products.push(product);
+    this.localStorageService.set('products', products)
   }
 }
