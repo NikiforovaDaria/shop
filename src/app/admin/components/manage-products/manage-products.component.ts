@@ -9,7 +9,6 @@ import { ProductModel } from 'src/app/components/products/models/productModel.mo
   styleUrls: ['./manage-products.component.css']
 })
 export class ManageProductsComponent implements OnInit {
-  // products: ProductModel[];
   products: Promise<Array<ProductModel>>;
   constructor(
     private router: Router,
@@ -26,7 +25,7 @@ export class ManageProductsComponent implements OnInit {
   }
   editProduct(product: ProductModel) {
     const link = ['admin/product/edit', product.id];
-    this.router.navigate(link);;
+    this.router.navigate(link);
   }
 }
 

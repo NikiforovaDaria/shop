@@ -20,7 +20,7 @@ export class ProductsService {
   constructor(private localStorageService: LocalStorageService) {
     const localStorage = this.localStorageService.get();
     this.productsPromise = Promise.resolve(localStorage);
-   }
+  }
 
   getProducts ():  Promise<ProductModel[]> {
     return this.productsPromise;
@@ -30,21 +30,21 @@ export class ProductsService {
   getProduct(id: number | string): Promise<ProductModel> {
     return this.getProducts()
       .then(product => {
-        this.maxId = products[products.length-1].id + 1;
-        return product.find(p => p.id === +id)})
+        this.maxId = products[products.length - 1].id + 1;
+        return product.find(p => p.id === +id); })
       .catch(() => Promise.reject('Error in getProduct method'));
   }
 
-  updateProduct(product: ProductModel){
-    this.localStorageService.set('products', products)
+  updateProduct(product: ProductModel) {
+    this.localStorageService.set('products', products);
     const idx = products.findIndex(p => p.id === product.id);
     if (idx > -1) {
       products.splice(idx, 1, product);
     }
   }
 
-  createProduct(product: ProductModel){
+  createProduct(product: ProductModel) {
     products.push(product);
-    this.localStorageService.set('products', products)
+    this.localStorageService.set('products', products);
   }
 }

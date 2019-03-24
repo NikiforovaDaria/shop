@@ -23,12 +23,10 @@ export class ProductAboutComponent implements OnInit {
     this.route.paramMap
       .pipe(
         switchMap((params: Params) => {
-					console.log('TCL: ngOnInit -> product', params)
           return this.productsService.getProduct(+params.get('productID'))
         }))
       .subscribe(
         product => {
-					console.log('TCL: ngOnInit -> product', product)
           return this.product = { ...product }
         },
         err => console.log(err)
